@@ -1,4 +1,4 @@
-Configuraciones FTP:
+#Configuraciones FTP:
   #-instalar paquete vsftp
 	  #/srv/ftp --> Directorio raiz (crea una carpeta llamada public para compartirficheros y evitar problemas )Asignar al usuario y grupo ftp y un 775 en permisos
 	  #/etc/vsftpd.conf --> fichero principal de configuracion
