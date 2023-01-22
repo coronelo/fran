@@ -1,0 +1,44 @@
+#PRIMERO TENDREMOS QUE CONFIGURAR NUESTRO SERVICIO DNS
+#INSTALAMOS bind9 y lo configuramos 
+#recuerda la linea--> mailserver IN MX 0 192.168.0.254
+#INSTALAR postfix
+#Seleccionamos "Sitio Internet"
+#Meter el dominio creado en las DNS solo dominio sin host
+#instalar courier-pop
+#pruebas telnet
+#telnet dominiocompleto y puerto 25
+
+#comandos
+#EHLO o HELO: Este comando es usado para identificarse al servidor SMTP.
+# MAIL FROM: <direccion_de_correo>: Este comando es usado para iniciar una sesión de correo. La dirección de correo especificada será la dirección del remitente.
+#RCPT TO: <direccion_de_correo>: Este comando es usado para especificar el destinatario del correo. Se pueden especificar varios destinatarios separándolos con comas.
+# DATA: Este comando es usado para escribir el cuerpo del mensaje. El cuerpo del mensaje debe terminar con un punto (.) en una nueva línea.
+# SEND: Este comando es usado para enviar el mensaje.
+# RSET: Este comando es usado para resetear el estado de la sesión de correo.
+# VRFY: Este comando es usado para verificar si una dirección de correo es válida en el sistema.
+# EXPN: Este comando es usado para obtener información sobre una lista de correo.
+# HELP: Este comando es usado para obtener ayuda sobre los comandos SMTP.
+# QUIT: Este comando es usado para cerrar la sesión.
+
+#helo [dominio]
+#mail from:
+#rcpt to:
+#data
+#escribir mensaje
+# . para finalizar
+#quit para salir
+#instalar courier-pop
+#probar telnet 
+#telnet nombre [dominio completo] 110
+#comandos 
+# user para iniciar sesión con tu nombre de usuario
+# pass para iniciar sesión con tu contraseña
+# list para ver la lista de mensajes en tu bandeja de entrada
+# retr para descargar un mensaje específico
+# dele para eliminar un mensaje
+# quit para cerrar la conexión con el servidor
+
+#thunderbird
+#deberemos hacerlo manual mente y pondremos el nombre del host.dominio
+#Los puertos son  110 para POP y 25 para smtp
+
