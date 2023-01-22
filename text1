@@ -1,0 +1,44 @@
+Configuraciones FTP:
+  #-instalar paquete vsftp
+	  #/srv/ftp --> Directorio raiz (crea una carpeta llamada public para compartirficheros y evitar problemas )Asignar al usuario y grupo ftp y un 775 en permisos
+	  #/etc/vsftpd.conf --> fichero principal de configuracion
+  #-Configuracio de directivas basicas para todos
+	 #>listen=YES
+	 #>listen_ipv6=NO
+  #-Configuracion solo lectura Usuarios sistema
+	#-NO TOCAR LA DIRECTIVA COMENTADA!!: chroot_local_user=NO 
+	    #>"Si da probleams añadir la directiva:"
+		        #>allow_writeable_chroot=YES
+  #-Configurar Usuario local lectura/escritura:
+	  #>write_enable=YES 
+#-Subir cualquier tipo defichero:
+	#>ascii_upload_enable=YES
+	#>ascii_download_enable=YES
+#-Encapsular al usuario:
+	#_Habilitar chroot para los usuarios locales
+		#>chroot_local_user=YES
+	#_No permitir permisos de escritura en el directorio de inicio
+		#>allow_writeable_chroot=YES
+	#>!!!!!!!!!!!!!!!! OPCIONAL !!!!!!!!!!!!!!!!!!!
+	#_Utilizar la variable %u en la ruta al directorio personal
+		#>user_sub_token=%u
+	#_Establecer la ruta al directorio principal de los usuarios
+		#>local_root=/var/ftp/%u
+#-MOSTRAR MENSAJE DE BIENVENIDA
+	#>ftpd_banner=Bienvenido a Fran Moreno FTP.
+#-TIEMPO MAXIMO USUARIOS:
+	#>idle_session_timeout=600
+#-SOLO USUARIOS ANONYMOUS:
+	#>local_enable=NO
+#-Permitir acceso LECTURA a anonymous:
+	#>anonymous_enable=YES
+#-permitir acceso ESCRITURA a anonymous:
+	#>anonymous_enable=YES
+#-ASIGNAR PERMISOS A FICHEROS ANON
+	#>anon_umask= 026 --> 644
+#-ANON PERMISOS DE SUBIR FICHEROS
+	#>anon_upload_enable=YES
+#-ANON PERMISOS DE ESCRITURA
+	#>anon_mkdir_write_enable=YES
+	#>write_enable=YES
+#>!!OJO CON LOS PERMISOS DE LA CARPETA PUBLIC !!!
