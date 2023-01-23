@@ -1,0 +1,19 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	franmoreno.local. root.franmoreno.local. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@		IN	NS	franmoreno.local. 
+@		IN	A	192.168.12.100
+mailserver	IN	MX 10	192.168.12.100
+mailserver	IN	A	192.168.12.100
+www		IN	A	192.168.12.100
+ftp		IN	A	192.168.12.100
+cliente1	IN	A	192.168.12.101
+cliente2	IN	A	192.168.12.102

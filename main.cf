@@ -1,0 +1,92 @@
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+
+# Debian specific:  Specifying a file name will cause the first
+# line of that file to be used as the name.  The Debian default
+# is /etc/mailname.
+#myorigin = /etc/mailname
+
+smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+biff = no
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 2 on
+# fresh installs.
+compatibility_level = 2
+
+
+
+# TLS parameters
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_tls_security_level=may
+
+smtp_tls_CApath=/etc/ssl/certs
+smtp_tls_security_level=may
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = server.franmoreno.local
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = $myhostname, franmoreno.local, server, localhost.localdomain, localhost
+relayhost = 
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = ipv4
+home_mailbox= Maildir/
+
+#PRIMERO TENDREMOS QUE CONFIGURAR NUESTRO SERVICIO DNS
+#INSTALAMOS bind9 y lo configuramos 
+#recuerda la linea--> mailserver IN MX 0 192.168.0.254
+#INSTALAR postfix
+#Seleccionamos "Sitio Internet"
+#Meter el dominio creado en las DNS solo dominio sin host
+#instalar courier-pop
+#pruebas telnet
+#telnet dominiocompleto y puerto 25
+#-------------------#
+#comandos
+#EHLO o HELO: Este comando es usado para identificarse al servidor SMTP.
+# MAIL FROM: <direccion_de_correo>: Este comando es usado para iniciar una sesión de correo. La dirección de correo especificada será la dirección del remitente.
+#RCPT TO: <direccion_de_correo>: Este comando es usado para especificar el destinatario del correo. Se pueden especificar varios destinatarios separándolos con comas.
+# DATA: Este comando es usado para escribir el cuerpo del mensaje. El cuerpo del mensaje debe terminar con un punto (.) en una nueva línea.
+# SEND: Este comando es usado para enviar el mensaje.
+# RSET: Este comando es usado para resetear el estado de la sesión de correo.
+# VRFY: Este comando es usado para verificar si una dirección de correo es válida en el sistema.
+# EXPN: Este comando es usado para obtener información sobre una lista de correo.
+# HELP: Este comando es usado para obtener ayuda sobre los comandos SMTP.
+# QUIT: Este comando es usado para cerrar la sesión.
+
+#helo [dominio]
+#mail from:
+#rcpt to:
+#data
+#escribir mensaje
+# . para finalizar
+#quit para salir
+#instalar courier-pop
+#probar telnet 
+#telnet nombre [dominio completo] 110
+#comandos 
+# user para iniciar sesión con tu nombre de usuario
+# pass para iniciar sesión con tu contraseña
+# list para ver la lista de mensajes en tu bandeja de entrada
+# retr para descargar un mensaje específico
+# dele para eliminar un mensaje
+# quit para cerrar la conexión con el servidor
+
+#thunderbird
+#deberemos hacerlo manualmente y pondremos el nombre del host.dominio
+#Los puertos son  110 para POP y 25 para smtp
